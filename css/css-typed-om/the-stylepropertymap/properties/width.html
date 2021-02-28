@@ -28,11 +28,13 @@ runPropertyTests('width', [
 runPropertyTests('min-width', [
   {
     syntax: '<percentage>',
-    specified: assert_is_equal_with_range_handling
+    specified: assert_is_equal_with_range_handling,
+    computed: assert_is_auto
   },
   {
     syntax: '<length>',
-    specified: assert_is_equal_with_range_handling
+    specified: assert_is_equal_with_range_handling,
+    computed: assert_is_auto
   },
 ]);
 

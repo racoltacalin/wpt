@@ -9,6 +9,12 @@ function assert_is_calc_sum(result) {
     'specified calc must be a CSSMathSum');
 }
 
+function assert_is_auto(input, result) {
+  assert_class_string(
+      result, 'CSSKeywordValue',
+      'when min width or min height is auto, style must be a CSSKeywordValue');
+}
+
 function assert_is_equal_with_range_handling(input, result) {
   if (input instanceof CSSUnitValue && input.value < 0)
     assert_style_value_equals(result, new CSSMathSum(input));
