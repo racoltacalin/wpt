@@ -6,6 +6,8 @@
     var t = async_test('Makes sure that preloaded resources are not downloaded again when used');
 </script>
 <link rel=preload href="resources/dummy.js?single-download-preload" as=script>
+<link rel=preload href="resources/module.js?single-download-preload" as=script>
+<link rel=preload href="resources/module.mjs?single-download-preload" as=script>
 <link rel=preload href="resources/dummy.css?single-download-preload" as=style>
 <link rel=preload href="resources/square.png?single-download-preload" as=image>
 <link rel=preload href="resources/square.png?background&single-download-preload" as=image>
@@ -30,6 +32,8 @@
 </style>
 <link rel="stylesheet" href="resources/dummy.css?single-download-preload">
 <script src="resources/dummy.js?single-download-preload"></script>
+<script src="resources/module.js?single-download-preload" type="module"></script>
+<script src="resources/module.mjs?single-download-preload" type="module"></script>
 <div id="background"></div>
 <img src="resources/square.png?single-download-preload">
 <video src="resources/white.mp4?single-download-preload">
@@ -45,6 +49,8 @@
         verifyPreloadAndRTSupport();
         setTimeout(t.step_func(function() {
             verifyLoadedAndNoDoubleDownload("resources/dummy.js?single-download-preload");
+            verifyLoadedAndNoDoubleDownload("resources/module.js?single-download-preload");
+            verifyLoadedAndNoDoubleDownload("resources/module.mjs?single-download-preload");
             verifyLoadedAndNoDoubleDownload("resources/dummy.css?single-download-preload");
             verifyLoadedAndNoDoubleDownload("resources/square.png?single-download-preload");
             verifyLoadedAndNoDoubleDownload("resources/square.png?background&single-download-preload");
