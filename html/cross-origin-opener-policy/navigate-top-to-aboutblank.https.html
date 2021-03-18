@@ -70,7 +70,9 @@ function navigateToAboutBlankTest(
     send(opener_token, `
       iframe = document.createElement('iframe');
       iframe.src = "${iframe_url}";
-      iframe.sandbox = "allow-top-navigation allow-scripts";
+      // Use sandbox to allow top navigation if the iframe is cross origin
+      if( ${same_origin != iframe_origin} )
+        iframe.sandbox = "allow-top-navigation allow-scripts";
       document.body.appendChild(iframe);
     `);
 
